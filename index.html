@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read this</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    #message-box {
+      display: none;
+
+    }
+
+    #text-animation {
+      text-align: center;
+      font-size: 24px;
+    }
+
+    #gif-container {
+      display: none;
+      text-align: center;
+    }
+
+    #gif-container img {
+      max-width: 100%;
+      max-height: 80vh;
+    }
+  </style>
+</head>
+<body>
+
+<div id="text-animation"></div>
+
+<div id="message-box">
+  <p>Do you want to continue?</p>
+  <button id="yes-btn">Yes</button>
+  <button id="no-btn">No</button>
+</div>
+
+<div id="gif-container">
+  <img src="./sad.gif" alt="GIF Image">
+</div>
+
+<script>
+  const compliments = [
+    "You have the most beautiful smile I've ever seen!",
+    "Your kindness is truly inspiring.",
+    "I admire your intelligence and wit.",
+    "You always brighten up my day with your presence.",
+    "Your passion for life is contagious!",
+    "You're incredibly talented and creative.",
+    "I feel lucky just to know you.",
+    "You make the world a better place just by being in it."
+  ];
+
+  let index = 0;
+  const textAnimationElement = document.getElementById("text-animation");
+  const messageBox = document.getElementById("message-box");
+  const gifContainer = document.getElementById("gif-container");
+
+  function displayNextCompliment() {
+    if (index < compliments.length) {
+      textAnimationElement.textContent = compliments[index];
+      index++;
+    } else {
+      clearInterval(animationInterval);
+      messageBox.style.display = "block"; // Display the message box after compliments
+    }
+  }
+
+  function displayNextMessage() {
+    if (index < compliments.length) {
+      textAnimationElement.textContent = compliments[index];
+      index++;
+    } else {
+      clearInterval(animationInterval);
+      messageBox.style.display = "block"; // Display the message box after compliments
+      textAnimationElement.style.display = "none"; // Hide the text animation element
+    }
+  }
+
+  const animationInterval = setInterval(displayNextMessage, 3000); // Change message every 3 seconds
+
+  document.getElementById("yes-btn").addEventListener("click", function() {
+    window.location.href = "./question.html"; // Replace "heart.html" with the actual path
+  });
+
+  document.getElementById("no-btn").addEventListener("click", function() {
+    gifContainer.style.display = "block"; // Display the gif image container
+    messageBox.style.display = "none"; // Hide the message box
+  });
+</script>
+
+</body>
+</html>

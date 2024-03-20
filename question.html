@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confession</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    #message-box {
+      width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: fixed;
+    }
+
+    #yes-btn, #no-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    #no-btn {
+      background-color: #f44336;
+    }
+  </style>
+</head>
+<body>
+
+<div id="message-box">
+  <p>Will you be mine?</p>
+  <button id="yes-btn">Yes</button>
+  <button id="no-btn">No</button>
+</div>
+
+<script>
+  document.getElementById("yes-btn").addEventListener("click", function() {
+    window.location.href = "./heart.html"; // Replace "path_to_your_previous_html_file.html" with the actual path
+  });
+
+  document.getElementById("no-btn").addEventListener("click", function() {
+    moveMessageBox();
+  });
+
+  function moveMessageBox() {
+    const messageBox = document.getElementById("message-box");
+    const maxWidth = window.innerWidth - messageBox.offsetWidth;
+    const maxHeight = window.innerHeight - messageBox.offsetHeight;
+    const x = Math.floor(Math.random() * maxWidth);
+    const y = Math.floor(Math.random() * maxHeight);
+    messageBox.style.left = x + "px";
+    messageBox.style.top = y + "px";
+  }
+
+  // Initial call to moveMessageBox to position it randomly
+  moveMessageBox();
+</script>
+
+</body>
+</html>
